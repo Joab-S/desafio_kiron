@@ -25,3 +25,8 @@
 -api/put/atividade-id/(?P<pk>[0-9]+): Atualiza atividades por ID
   
 -api/delete/atividade-id/(?P<pk>[0-9]+): Deleta atividades por ID
+  
+-api/auth/login: Permite ao usuário fazer login no sistema (recebe um token como reposta)
+  
+  
+NOTA: Todas as entradas (exceto cadastro e login) pedem algum tipo de autenticação, sendo que para os endpois de usuários, grande parte é necessaria permissão de administrador, mas para atividades um login de usários é suficiente.
