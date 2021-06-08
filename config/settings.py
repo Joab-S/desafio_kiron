@@ -41,10 +41,11 @@ INSTALLED_APPS = [
 
     # Meus apps
     'usuarios.apps.UsuariosConfig',
-    'paginas.apps.PaginasConfig',
     'cadastros.apps.CadastrosConfig',
 
     # 3th apps
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -107,6 +108,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ] 
+}
+
+AUTHENTICATION_BACKENDS = ("usuarios.api.utils.EmailBackend", "django.contrib.auth.backends.ModelBackends", )
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -134,3 +143,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Modelo de Usuário personalizado
 AUTH_USER_MODEL = 'usuarios.User'
+
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
